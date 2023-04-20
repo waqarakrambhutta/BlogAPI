@@ -9,6 +9,9 @@ class Author(models.Model):
     is_staff = models.BooleanField()
     about = models.TextField()
 
+    def __str__(self) -> str:
+        return self.username
+
 class Post(models.Model):
     POST_STATUS_DRAFT='d'
     POST_STATUS_PUBLISHED= 'P'
@@ -28,6 +31,9 @@ class Post(models.Model):
                         default=POST_STATUS_DRAFT)
     slug = models.SlugField(unique=True,max_length=255)
 
+    def __str__(self) -> str:
+        return self.title
+
 class Comment(models.Model):
     COMMENT_STATUS_APPROVED = 'A'
     COMMENT_STATUS_PENDING = 'P'
@@ -38,9 +44,10 @@ class Comment(models.Model):
         (COMMENT_STATUS_PENDING,'pending'),
         (COMMENT_STATUS_SPAM,'spam')
     ]
+    Heading = models.CharField(max_length=50)
     post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
-    author = models.CharField(max_length=255)
-    email = models.EmailField()
+    author = models.ForeignKey(Author,on_delete=models.CASCADE,related_name='author_comments')
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=1,choices=COMMENT_STATUS,default=COMMENT_STATUS_PENDING)
+    
