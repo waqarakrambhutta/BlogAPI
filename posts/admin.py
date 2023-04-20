@@ -11,12 +11,13 @@ class AuthorAdmin(admin.ModelAdmin):
 class CommentsAdmin(admin.ModelAdmin):
     list_display=['post','author','content','published_date','status']
     list_per_page = 15
+    
 
 @admin.register(models.Post)
 class PostsAdmin(admin.ModelAdmin):
     list_display=['title','content','author','publish_date','status','slug']
     list_per_page = 15
-    search_fields = ['author__istartswith']
+    search_fields = ['title__istartswith']
     
     
 
