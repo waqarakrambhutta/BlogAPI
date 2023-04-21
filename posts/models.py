@@ -51,3 +51,5 @@ class Comment(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=1,choices=COMMENT_STATUS,default=COMMENT_STATUS_PENDING)
     
+    def __str__(self) -> str:
+        return self.Heading
