@@ -1,13 +1,14 @@
 from django.urls import path,include
 from .views import say_hello
 from . import views
-from rest_framework import routers
+from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
-router.register(r'author',views.AuthorViewSet)
+router.register('author',views.AuthorViewSet)
 
 
-urlpatterns = [
+
+urlpatterns = router.urls + [
     path('hello/',say_hello),
-    # path('author/',views.author_list)
-]
+    # path('author/',views.AutherViewset),
+] 

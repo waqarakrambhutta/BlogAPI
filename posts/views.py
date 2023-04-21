@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
@@ -12,3 +13,11 @@ class AuthorViewSet(ModelViewSet):
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
 
+def AutherViewset(request):
+    queryset= Author.objects.all()
+    serializer = AuthorSerializer(queryset,many=True)
+    return HttpResponse(serializer.data)
+
+    
+def authorviewset(request):
+    return HttpResponse('ok')
