@@ -10,8 +10,12 @@ def say_hello(request):
     return render(request,'index.html',{'name':'Waqar'})
 
 class AuthorViewSet(ModelViewSet):
+    http_method_names = ['get','post','patch','delete','put','update','head','options']
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
+
+    def get_serializer_context(self):
+        return {'author_id':self.kwargs['pk']}
 
 def AutherViewset(request):
     queryset= Author.objects.all()
@@ -19,5 +23,5 @@ def AutherViewset(request):
     return HttpResponse(serializer.data)
 
     
-def authorviewset(request):
+def ViewSetTester(request):
     return HttpResponse('ok')
