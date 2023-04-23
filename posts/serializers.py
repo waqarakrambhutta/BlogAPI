@@ -11,9 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['id','title','content','author','publish_date','status','slug']
 
-# class CommentSerializer(serializers.ModelField):
-#     post = serializers.CharField(many=True)
-#     author = serializers.CharField(many=True)
-#     class Meta:
-#         model = Comment
-#         fields = ['id','Heading','post','author','content','published_date','status']
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id','Heading','post','author','content','published_date','status']

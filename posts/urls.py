@@ -5,16 +5,13 @@ from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
 router.register('author',views.AuthorViewSet)
-router.register('post',views.PostViewSet)
-# router.register('comments/',views.CommentViewSet)
+router.register('posts',views.PostViewSet)
+router.register('comments',views.CommentViewSet)
 
 # author_router = routers.NestedDefaultRouter(
 #     router,
 #     'author',
 #     lookup='product')
-# author_router.register('posts',views.PostViewSet)
+# author_router.register('posts',views.PostSerializer,basename='post')
 
-urlpatterns = router.urls + [
-    path('hello/',say_hello),
-    # path('author/',views.AutherViewset),
-] 
+urlpatterns = router.urls + [path('hello/',say_hello)] 
