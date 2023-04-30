@@ -15,3 +15,7 @@ router.register('comments',views.CommentViewSet)
 # author_router.register('posts',views.PostSerializer,basename='post')
 
 urlpatterns = router.urls + [path('hello/',say_hello)] 
+
+
+
+
