@@ -14,7 +14,9 @@ router.register('comments',views.CommentViewSet)
 #     lookup='product')
 # author_router.register('posts',views.PostSerializer,basename='post')
 
-urlpatterns = router.urls + [path('hello/',say_hello)] 
+urlpatterns = router.urls + [
+    path('hello/',say_hello)
+    ] 
 
 
 
